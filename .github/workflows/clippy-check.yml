@@ -1,26 +1,32 @@
-on: [pull_request]
+---
 name: Clippy
+
+'on': [pull_request]
+
 jobs:
   clippy_check:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-      - uses: actions-rs/toolchain@v1
+      - uses: actions/checkout@v4
+
+      # Note: cargo fmt must always be run with nightly
+      - name: toolchain
+        uses: dtolnay/rust-toolchain@nightly
         with:
-          components: clippy, rustfmt
           toolchain: nightly
-          override: true
-      - uses: actions-rs/cargo@v1
-        with:
-          command: fmt
-          args: --all -- --check
+          components: clippy, rustfmt
+
+      - name: Cache rust dependencies
+        uses: Swatinem/rust-cache@v2
+
+      - name: cargo fmt
+        run: |
+          cargo +nightly fmt --all -- --check
+
       - name: Install cargo-lints
-        uses: actions-rs/cargo@v1
-        with:
-          command: install
-          args: cargo-lints
-      - name: Clippy lints
-        uses: actions-rs/cargo@v1
-        with:
-          command: lints
-          args: clippy --all-targets
+        run: |
+          cargo install cargo-lints
+
+      - name: Clippy check (with lints)
+        run: |
+          cargo lints clippy --all-targets --all-features
