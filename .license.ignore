@@ -1,0 +1,12 @@
+./LICENSE
+./benches/main.rs
+./examples/encode_varint_from_stdin.rs
+./examples/read_write_file.rs
+./fuzz/fuzz_targets/varint.rs
+./src/fixed.rs
+./src/fixed_tests.rs
+./src/lib.rs
+./src/reader.rs
+./src/varint.rs
+./src/varint_tests.rs
+./src/writer.rs

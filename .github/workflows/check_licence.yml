@@ -1,4 +1,7 @@
-on:
+---
+name: file licenses
+
+'on':
   push:
     branches:
       - main
@@ -15,10 +18,12 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v2
+
       - name: install ripgrep
         run: |
           wget https://github.com/BurntSushi/ripgrep/releases/download/13.0.0/ripgrep_13.0.0_amd64.deb
           sudo dpkg -i ripgrep_13.0.0_amd64.deb
           rg --version || exit 1
+
       - name: run the license check
         run: ./scripts/file_license_check.sh
