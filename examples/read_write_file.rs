@@ -6,17 +6,17 @@ use integer_encoding::*;
 async fn write_test_files() -> io::Result<()> {
     let _ = fs::remove_file("/tmp/varintbytes");
     let mut f = tokio::fs::File::create("/tmp/varintbytes").await?;
-    f.write_varint_async(30 as u32).await?;
-    f.write_varint_async(60 as u32).await?;
-    f.write_varint_async(90 as u32).await?;
-    f.write_varint_async(9000000 as u32).await?;
+    f.write_varint_async(30u32).await?;
+    f.write_varint_async(60u32).await?;
+    f.write_varint_async(90u32).await?;
+    f.write_varint_async(9000000u32).await?;
 
     let _ = fs::remove_file("/tmp/fixedintbytes");
     let mut f = tokio::fs::File::create("/tmp/fixedintbytes").await?;
-    f.write_fixedint_async(30 as u32).await?;
-    f.write_fixedint_async(60 as u32).await?;
-    f.write_fixedint_async(90 as u32).await?;
-    f.write_fixedint_async(9000000 as u32).await?;
+    f.write_fixedint_async(30u32).await?;
+    f.write_fixedint_async(60u32).await?;
+    f.write_fixedint_async(90u32).await?;
+    f.write_fixedint_async(9000000u32).await?;
     Ok(())
 }
 

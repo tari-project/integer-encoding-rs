@@ -11,7 +11,7 @@
 //! ```
 //! use integer_encoding::*;
 //!
-//! fn main() {
+//!
 //!     let a: u32 = 344;
 //!     let encoded_byte_slice = a.encode_fixed_light();
 //!     assert_eq!(Some(a), u32::decode_fixed(&encoded_byte_slice));
@@ -20,7 +20,6 @@
 //!     let b: i32 = -111;
 //!     let encoded_byte_vec = b.encode_var_vec();
 //!     assert_eq!(Some((b, 2)), i32::decode_var(&encoded_byte_vec));
-//! }
 //! ```
 #[forbid(unsafe_code)]
 mod fixed;

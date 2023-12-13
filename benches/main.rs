@@ -24,7 +24,7 @@ fn encode_v(b: &mut Bencher) {
         7854615463131234543,
     ] as [i64; 8];
 
-    let mut dst = [0 as u8; 10];
+    let mut dst = [0u8; 10];
 
     b.iter(|| {
         // 8x each.
@@ -116,10 +116,10 @@ fn decode_v(b: &mut Bencher) {
 bencher::benchmark_group!(varint_benches, encode_v, decode_v);
 
 fn encode_f(b: &mut Bencher) {
-    let my_u64 = 94949291991190 as u64;
-    let my_i64 = -12219304371120 as i64;
+    let my_u64 = 94949291991190u64;
+    let my_i64 = -12219304371120i64;
 
-    let mut dst = [0 as u8; 8];
+    let mut dst = [0u8; 8];
 
     b.iter(|| {
         // 8x each.
@@ -143,8 +143,8 @@ fn encode_f(b: &mut Bencher) {
 }
 
 fn decode_f(b: &mut Bencher) {
-    let my_u64 = 94949291991190 as u64;
-    let my_i64 = -12219304371120 as i64;
+    let my_u64 = 94949291991190u64;
+    let my_i64 = -12219304371120i64;
 
     let u64_src = my_u64.encode_fixed_vec();
     let i64_src = my_i64.encode_fixed_vec();
