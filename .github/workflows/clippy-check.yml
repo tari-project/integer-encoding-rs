@@ -29,8 +29,8 @@ jobs:
 
       - name: Clippy check futures_async (with lints)
         run: |
-          cargo lints clippy --features futures_async --all-features
+          cargo lints clippy --all-targets --features futures_async
 
       - name: Clippy check tokio (with lints)
         run: |
-          cargo lints clippy --features tokio_async --all-features
+          cargo lints clippy --all-targets --features tokio_async
